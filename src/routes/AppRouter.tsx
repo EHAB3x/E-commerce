@@ -9,11 +9,13 @@ import Login from "@pages/Login";
 import Register from "@pages/Register";
 // Router Functions
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Error from "@pages/Error";
 
 
 const router = createBrowserRouter([{
     path:"/",
     element:<MainLayout />,
+    errorElement: <Error />,
     children:[
       {
       index:true,
