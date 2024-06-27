@@ -3,6 +3,7 @@ import { Category } from "@components/eCommerce";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useEffect } from "react";
 import { actGetCategories } from "@store/categories/categoriesSlice";
+import { Loading } from "@components/feedback";
 
 const Categories = () => {
   const dispatch = useAppDispatch();
@@ -30,7 +31,9 @@ const Categories = () => {
       : "There are no categories";
   return (
     <Container>
-      <Row>{categoriesList}</Row>
+      <Loading status={loading} error={error}>
+        <Row>{categoriesList}</Row>
+      </Loading>
     </Container>
   );
 };
