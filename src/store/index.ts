@@ -5,22 +5,21 @@ import categories from "./categories/categoriesSlice";
 import products from "./products/productsSlice";
 import cart from "./cart/cartSlice";
 
-const rootPersistConfig = {
-  key: "root",
+const cartPersistConfig = {
+  key: "cart",
   storage,
-  whitelist: ["cart"],
+  whitelist: ["items"],
 };
 
 const rootReducer = combineReducers({
   categories,
   products,
-  cart,
+  cart :  persistReducer(cartPersistConfig, cart),
 });
 
-const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;
