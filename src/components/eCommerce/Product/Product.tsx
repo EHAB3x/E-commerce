@@ -9,25 +9,23 @@ const { product, productImg } = styles;
 
 const Product = ({ id, title, price, img }: TProduct) => {
   const dispatch = useAppDispatch();
-  const [isBtnClicked, setIsBtnClicked] = useState(0);
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
 
   useEffect(() => {
-    if (!isBtnClicked) {
+    if (!isBtnDisabled) {
       return;
     }
-    setIsBtnDisabled(true);
 
     const debounce = setTimeout(() => {
       setIsBtnDisabled(false);
     }, 300);
 
     return () => clearTimeout(debounce);
-  }, [isBtnClicked]);
+  }, [isBtnDisabled]);
 
   const addToCartHandler = () => {
     dispatch(addToCart(id));
-    setIsBtnClicked((prev) => prev + 1);
+    setIsBtnDisabled(true);
   };
   return (
     <div className={product}>
