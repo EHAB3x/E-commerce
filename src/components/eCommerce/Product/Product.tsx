@@ -7,9 +7,7 @@ import styles from "./styles.module.css";
 
 const { product, productImg, maximumNotice } = styles;
 
-const Product = memo(({ id, title, price, img, max, quantity }: TProduct) => {
-  console.log("Fire");
-  
+const Product = memo(({ id, title, price, img, max, quantity }: TProduct) => {  
   const dispatch = useAppDispatch();
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
 
